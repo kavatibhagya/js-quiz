@@ -44,8 +44,8 @@ function showquestion(question)
    })
 }
 function resetstate()
-{
-    nextbutton.classList.add('hide')
+{   clearstatusclass(document.body)
+        nextbutton.classList.add('hide')
     while(answerbuttonselement.firstChild)
     {
         answerbuttonselement.removeChild(answerbuttonselement.firstChild)
@@ -59,7 +59,7 @@ function setanswer(e){
         {
             setstatusclass(button, button.dataset.correct)
         })
-        if(shuffledquestions > currentquestionindex +1){
+        if(shuffledquestions.length > currentquestionindex +1){
         nextbutton.classList.remove('hide')
         }
         else
@@ -98,6 +98,33 @@ const  questions =[
             {text: '22', correct: false},
             {text: '24', correct: false},
             {text: '5' , correct: false}
+        ]
+    },
+    {
+        question: 'what is 11*2 ? ',
+        answers: [
+            {text: '4', correct: false},
+            {text: '22', correct: true},
+            {text: '24', correct: false},
+            {text: '5' , correct: false}
+        ]
+    },
+    {
+        question: 'what is 12+12 ? ',
+        answers: [
+            {text: '4', correct: false},
+            {text: '22', correct: false},
+            {text: '24', correct: true},
+            {text: '5' , correct: false}
+        ]
+    },
+    {
+        question: 'what is 6-1 ? ',
+        answers: [
+            {text: '4', correct: false},
+            {text: '22', correct: false},
+            {text: '24', correct: false},
+            {text: '5' , correct: true}
         ]
     }
 ]
