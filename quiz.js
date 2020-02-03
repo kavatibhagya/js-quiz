@@ -8,6 +8,11 @@ const answerbuttonselement = document.getElementById('answer-buttons')
 let shuffledquestions, currentquestionindex
 
 startbutton.addEventListener('click',startgame)
+nextbutton.addEventListener('click' , () => {
+    currentquestionindex++
+    setnextquestion()
+
+})
 
 function startgame(){
     startbutton.classList.add('hide')
@@ -54,6 +59,14 @@ function setanswer(e){
         {
             setstatusclass(button, button.dataset.correct)
         })
+        if(shuffledquestions > currentquestionindex +1){
+        nextbutton.classList.remove('hide')
+        }
+        else
+        {
+            startbutton.innerText ='restart'
+            startbutton.classList.remove('hide')
+        }
 
 
 }
