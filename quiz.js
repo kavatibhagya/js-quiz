@@ -10,7 +10,6 @@ let shuffledquestions, currentquestionindex
 startbutton.addEventListener('click',startgame)
 
 function startgame(){
-    console.log('started')
     startbutton.classList.add('hide')
     shuffledquestions = questions.sort(() => Math.random - .5)
     currentquestionindex = 0
@@ -47,15 +46,45 @@ function resetstate()
         answerbuttonselement.removeChild(answerbuttonselement.firstChild)
     }
 }
-function setanswer(){
+function setanswer(e){
+    const selectedbutton = e.target
+    const correct =selectedbutton.dataset.correct
+    setstatusclass(document.body, correct)
+    Array.from(answerbuttonselement.children).forEach(button =>
+        {
+            setstatusclass(button, button.dataset.correct)
+        })
+
 
 }
+function setstatusclass(element, correct)
+{
+clearstatusclass(element)
+if (correct)
+{
+    element.classList.add('correct')
+    
+}
+else 
+{
+    element.classList.add('wrong')
+}
+}
+function clearstatusclass(element)
+{
+    element.classList.remove('correct')
+    element.classList.remove('wrong')
+
+
+}  
 const  questions =[
     {
         question: 'what is 2+2 ? ',
         answers: [
             {text: '4', correct: true},
-            {text: '22', correct: false}
+            {text: '22', correct: false},
+            {text: '24', correct: false},
+            {text: '5' , correct: false}
         ]
     }
 ]
